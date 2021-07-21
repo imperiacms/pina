@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title><!--XX-title--></title>
+  <meta name="keywords" content="<!--XX-TEXT:keywords-->" />
+
+  <!-- Insert bootstrap css -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+  #IF(<!--XX-editmode-->)
+  <link rel="stylesheet" href="/pina/styles/pina_editmode.css">
+  <link rel="stylesheet" href="/imperia/css/editmode/bootstrap-fixes.css">
+  #ENDIF
+  <link rel="stylesheet" href="/pina/styles/pina.css">
+  <!--IMPERIA:ONECLICKEDIT-->
+
+  <!-- Dummy style -->
+  <style>
+    body {
+      padding-top: 20px;
+    }
+    @font-face {
+      font-family: 'OFLGoudy';
+      src:url("Sorts_Mill_Goudy/SortsMillGoudy-Regular.woff") format("woff"),
+      url("Sorts_Mill_Goudy/SortsMillGoudy-Regular.ttf") format("truetype");
+    }
+    .pina-text, .pina-image-wrapper figcaption {
+      font-family: 'OFLGoudy','Georgia', serif;
+    }
+    .pina-text {
+      font-size: 19px;
+    }
+    .content-wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    @media  screen and (max-width: 768px) {
+      .content-wrapper {
+        margin: 10px;
+      }
+    }
+  </style>
+</head>
+<body style="background-color: white" >
+
+<!--formstart-->
+<!--template-description: Test Pina components -->
+
+  <div class="content-wrapper pina">
+    <!--INSERT_FLEXMODULE:INDEX=2:VIEW=boxd.html:DND=1:JS_OPERATIONS=1-->
+  </div>
+<!--formend-->
+
+  #IF(<!--XX-editmode-->)
+  <script src="/pina/js/pina_editmode.js"></script>
+  #ENDIF
+  
+</body>
+</html>

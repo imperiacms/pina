@@ -1,0 +1,26 @@
+AUTHOR: pirobase imperia GmbH
+DESCRIPTION: Text Modul
+HELPTEXT: Text
+LOAD: AJAX
+
+#IF (<!--XX-editmode-->)
+
+  <!-- apply pina style -->
+  <div class="pina">
+    <!-- full width for iwe -->
+    <div class="pina-wrapper-iwe">
+        <?imperia iwe2
+          id: iwe2_<!--FLEX_INDEX-->_<!--FLEX_ID-->
+          customConfig: /pina/iwe/iwe2-config.js
+          toolbar: Imperia
+        ?>
+    </div>
+  </div>
+
+#ELSE
+
+  <div class="pina-text">
+    <!--XX-FLEX-iwe2-->
+  </div>
+
+#ENDIF

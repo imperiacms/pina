@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'OFLGoudy';
+    src:url("Sorts_Mill_Goudy/SortsMillGoudy-Regular.woff") format("woff"),
+      url("Sorts_Mill_Goudy/SortsMillGoudy-Regular.ttf") format("truetype");
+}
+
+.cke_editable {
+  font-family: 'OFLGoudy','Georgia', serif;
+  font-size: 19px;
+}
+
+
+

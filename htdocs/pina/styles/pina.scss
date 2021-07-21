@@ -1,0 +1,59 @@
+/*                            */
+/* Pina styles for Save Mode. */
+/*                            */
+
+@import 'variables';
+
+// Pina Felxmodules Article image and Article Text 
+.pina-image-wrapper {
+    img {width: 100%}
+    figure {
+        margin: 0;
+    }
+    figcaption {
+        font-size: 0.8em;
+        opacity: 0.8;
+        padding: 3px;
+        text-align: left;
+    }
+}
+.pina-image-left {
+    float: left;
+    margin: 0 1.3rem 0.5rem 0;
+    max-width: $pina-fleximage-width;
+    margin-left: -2.5rem; // 40px
+}
+.pina-image-right {
+    float: right;
+    margin: 0 0 0.5rem 1.3rem;
+    max-width: $pina-fleximage-width;
+    margin-right: -2.5rem; //40px
+}
+.pina-image-center {
+    text-align: center;
+    margin: 1em auto;
+    max-width: $pina-fleximage-centered-width;
+}
+
+
+// Clear float after text and before image
+.pina-text:after,
+.clear-float {
+    content: '';
+    display: table;
+    height: 1px;
+    clear: both;
+    width: 100%;
+}
+@media screen and (max-width: 767px) {
+    .pina-image-left, .pina-image-right {
+        margin: 10px auto;
+        float: none;
+        display: block;
+    }
+}
+@media screen and (max-width: 300px) {
+    .pina-image-left, .pina-image-right {
+        max-width: 100%;
+    }
+}
