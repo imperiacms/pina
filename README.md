@@ -13,6 +13,18 @@ Following the given examples you could easily style form elements like buttons, 
 2. Wrap the content of the template (or flex, slot etc.) in a <div class="pina">
 3. Use the bootstrap 4 syntax to create form controls (https://getbootstrap.com/docs/4.6/components/forms/) or the imperia custom elements syntax.
 
+## Pina Flexmodules
+
+### Pina Article-Image and Pina Article-text
+
+For the Flexmodules 'Article Image' and 'Article text' you have to include pina.css in savemode.
+
+Default width of the floated images is 300px and of the centered image: 800px; 
+You can change this in /htdocs/pina/styles/_variables.scss ($pina-fleximage-width, $pina-fleximage-centered-width).
+
+Adjust also the correct sizes of the created image variants (img_small, img_big) in the PI of the img tag in the flexmodule itself. (image width * 2 for optimal dispaly on retina)
+    
+    
 ## Pina containers in Editmode
 
 There are three pina classes for containers:
@@ -110,13 +122,3 @@ The rest is handled by pina_editmode.js
 <!-- /pina toggle combo -->
 ```
 
-## Pina Flexmodules
-
-### Pina Article-Image and Pina Article-text
-
-For the Flexmodules 'Article Image' and 'Article text' you have to include pina.css in savemode.
-
-Default width of the floated images is 300px and for the centered image: 800px; 
-You can change this in /htdocs/pina/styles/_variables.scss ($pina-fleximage-width, $pina-fleximage-centered-width).
-
-Adjust also the correct sizes of the created image variants (img_small, img_big) in the PI of the img tag in the flexmodule itself. (image width * 2 for optimal dispaly on retina)
