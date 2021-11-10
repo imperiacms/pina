@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title><!--XX-title--></title>
+  <meta name="keywords" content="<!--XX-TEXT:keywords-->" />
+
+  <!--IMPERIA:ONECLICKEDIT-->
+
+  <!-- Bootstrap core CSS -->
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="/css/modern-business.css" rel="stylesheet">
+
+
+  <!-- <link href="/css/pina_test.css" rel="stylesheet"> -->
+  <link href="/pina/styles/pina.css" rel="stylesheet">
+
+
+  #IF(<!--XX-editmode-->)
+  <link rel="stylesheet" href="/imperia/css/editmode/bootstrap-fixes.css">
+  <link rel="stylesheet" href="/pina/styles/pina_editmode.css">
+  #ENDIF
+  <link rel="stylesheet" href="/pina/styles/pina.css">
+
+</head>

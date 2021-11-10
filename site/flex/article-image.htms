@@ -13,7 +13,7 @@ LOAD: AJAX
       title="Bild links ausrichten">
       <input name="IMPERIA:image_justification" 
       id="<!--XX-image_justification_left_<!--FLEX_INDEX-->_<!--FLEX_ID-->" type="radio" value="left"
-      #IF(NOT("<!--XX-image_justification-->"))
+      #IF(NOT("<!--XX-FLEX-image_justification-->"))
       checked
       #ENDIF
       >
@@ -44,6 +44,7 @@ LOAD: AJAX
             <?imperia mam copy
               copyright:image_copyright
               title:image_title
+              caption:image_caption
               ORIGURL:image_dz
             ?>
             <?imperia mam plugin ResizedVariants?>
@@ -57,6 +58,8 @@ LOAD: AJAX
           <input name="IMPERIA:image_dz" type="hidden" />
           <input name="IMPERIA:image_small" type="hidden" />
           <input name="IMPERIA:image_big" type="hidden" />
+          <input name="IMPERIA:image_alt" type="hidden" />
+          <input name="IMPERIA:image_title" type="hidden" />
 
           <!-- Additinal visible image settings -->
           <div class="visible-settings">
@@ -114,8 +117,8 @@ LOAD: AJAX
       #ELSE
         src="<!--XX-image_small_<!--FLEX_INDEX-->_<!--FLEX_ID-->-->"
       #ENDIF
-        title="IMPERIA:image_title"
-        alt="IMPERIA:image_alt"
+        title="<!--XX-TEXT:image_title_<!--FLEX_INDEX-->_<!--FLEX_ID-->-->"
+        alt="<!--XX-TEXT:image_alt_<!--FLEX_INDEX-->_<!--FLEX_ID-->-->"
         id="<!--XX-TEXT:image_<!--FLEX_INDEX-->_<!--FLEX_ID-->-->"
       />
       #IF("<!--XX-image_caption_<!--FLEX_INDEX-->_<!--FLEX_ID-->-->" OR "<!--XX-image_copyright_<!--FLEX_INDEX-->_<!--FLEX_ID-->-->")

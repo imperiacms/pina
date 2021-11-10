@@ -1,0 +1,86 @@
+AUTHOR: pirobase imperia GmbH
+DESCRIPTION: Zitat Modul
+HELPTEXT: Zitat
+LOAD: AJAX
+
+
+#IF (<!--XX-editmode-->)
+<div class="pina pina-quote-flex-wrapper">
+
+  <!-- pina toolbar -->
+  <div class="pina-flex-toolbar">
+    <label class="quote-justification-radio quote-justification-radio-left" for="<!--XX-quote_justification_left_<!--FLEX_INDEX-->_<!--FLEX_ID-->"
+      title="Bild links ausrichten">
+      <input name="IMPERIA:quote_justification"
+      id="<!--XX-quote_justification_left_<!--FLEX_INDEX-->_<!--FLEX_ID-->" type="radio" value="left"
+      #IF(NOT("<!--XX-FLEX-quote_justification-->"))
+      checked
+      #ENDIF
+      >
+    </label>
+    <label class="quote-justification-radio quote-justification-radio-right" for="<!--XX-quote_justification_right_<!--FLEX_INDEX-->_<!--FLEX_ID-->"
+      title="Bild rechts ausrichten">
+      <input name="IMPERIA:quote_justification" id="<!--XX-quote_justification_right_<!--FLEX_INDEX-->_<!--FLEX_ID-->" type="radio" value="right">
+    </label>
+    <label class="quote-justification-radio quote-justification-radio-center" for="<!--XX-quote_justification_center_<!--FLEX_INDEX-->_<!--FLEX_ID-->"
+      title="Bild zentrieren">
+      <input name="IMPERIA:quote_justification" id="<!--XX-quote_justification_center_<!--FLEX_INDEX-->_<!--FLEX_ID-->" type="radio" value="center">
+    </label>
+  </div>
+
+  <!-- center the content & apply max-width -->
+  <div class="pina-wrapper">
+
+    <div class="pina-quote-wrapper clearfix
+      #IF("<!--XX-quote_justification_<!--FLEX_INDEX-->_<!--FLEX_ID-->-->")
+      pina-quote-wrapper-<!--XX-quote_justification_<!--FLEX_INDEX-->_<!--FLEX_ID-->-->"
+      #ELSE 
+      pina-quote-wrapper-left"
+      #ENDIF
+    >
+      <div class="pina-quote-flex clearfix">
+        <div class="pina-float-container">
+          <div class="form-group">
+            <label for="quote_<!--FLEX_INDEX-->_<!--FLEX_ID-->">Hier Zitat eingeben</label>
+            <textarea name="IMPERIA:quote"
+                      id="quote_<!--FLEX_INDEX-->_<!--FLEX_ID-->"
+                      class="form-control" rows="4"
+            ></textarea>
+          </div>
+
+          <!-- Additinal visible settings -->
+          <div class="visible-settings">
+            <div class="form-group">
+              <label for="quote_originator_<!--FLEX_INDEX-->_<!--FLEX_ID-->">Name des Urhebers</label>
+              <input name="IMPERIA:quote_originator" id="quote_originator_<!--FLEX_INDEX-->_<!--FLEX_ID-->"
+              class="form-control" type="text" placeholder="Hier den Namen eingeben" />
+              <div class="form-hint">Die Angabe des Urhebers ist optional.</div>
+            </div>
+          </div>
+          <!-- /Additinal visible image settings -->
+
+        </div>
+      </div>
+    </div>
+
+  </div> <!-- /pina-wrapper -->
+</div>
+#ELSE
+
+  #IF(<!--XX-FLEX-quote-->)
+  <span class="clear-float"></span>
+  <div class="pina-quote-wrapper pina-quote-<!--XX-TEXT:quote_justification_<!--FLEX_INDEX-->_<!--FLEX_ID-->-->">
+    <div class="pina-quote"
+    >    <!--XX-TEXT:quote_<!--FLEX_INDEX-->_<!--FLEX_ID-->-->
+
+    #IF("<!--XX-TEXT:quote_originator_<!--FLEX_INDEX-->_<!--FLEX_ID-->-->" NE "")
+    <span class="pina-quote-originator">
+      <!--XX-TEXT:quote_originator_<!--FLEX_INDEX-->_<!--FLEX_ID-->-->
+    </span>
+    #ENDIF
+    </div>
+
+  </div>
+  #ENDIF
+
+#ENDIF

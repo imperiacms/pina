@@ -1,0 +1,285 @@
+AUTHOR: pirobase imperia GmbH
+DESCRIPTION: Bildergalerie
+HELPTEXT: Bildergalerie
+LOAD: AJAX
+
+
+#IF(<!--XX-editmode-->)
+
+<!-- Imperia Modul -->
+    <div class="pina ic-gallery" id="gallery_<!--FLEX_INDEX-->_<!--FLEX_ID-->">
+        
+        <div class="pina-wrapper">
+
+            <div class="ic-preview ic-gallery-preview">
+                <div class="ic-preview-wrapper"
+                #IF(NOT("<!--XX-FLEX-totalNum-->") OR ("<!--XX-FLEX-totalNum-->" EQ 0))
+                    class="ic-preview-wrapper ic-preview-highlighted"
+                #ENDIF
+                >
+                    <div class="img_layer img_layer_2"></div>
+                    <div class="img_layer img_layer_1"></div>
+                    <div class="img_layer img_layer_0">
+                        <p class="ic-preview-init-msg"> <!--Die Galerie ist leer. <br>-->Optimale Bildgröße: 800x400px</p>
+                        <img src="" class="ic-preview-image gallery_preview_image" alt="" >
+                    </div>
+                    <p class="ic-preview-counter">
+                        <input name="IMPERIA:totalNum" value="0" type="hidden" id="galleryTotalInput_<!--FLEX_INDEX-->_<!--FLEX_ID-->" >
+                        <span id="galleryTotal_<!--FLEX_INDEX-->_<!--FLEX_ID-->"></span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="mam_gallery_add">
+                <div class="addBlock ic-add-image-btn" id="addBlockId_<!--FLEX_INDEX-->_<!--FLEX_ID-->">
+                    <?imperia mam_gallery
+                        fill_block: <!--FLEX_INDEX-->_<!--FLEX_ID-->_102
+                        button_title: Bilder hinzufügen
+                        window_width: 500
+                        window_height: 500
+                    ?>
+                </div>
+            </div>
+
+            <!-- pina toggle component -->
+            
+            <button class="i-button i-secondary-btn pina-toggle-flex-settings ic-toggle-gallery-btn" type="button"
+                    data-expand-label="Alle Bilder einblenden"
+                    data-collapsed-label="Alle Bilder ausblenden"
+                    #IF(NOT("<!--XX-FLEX-totalNum-->") OR (<!--XX-FLEX-totalNum--> EQ 0))
+                    style="visibility: hidden;"
+                    #ENDIF
+                    >
+                <span>Alle Bilder einblenden</span>
+            </button>
+
+
+            <div class="pina-flex-settings" id="collapseItem_<!--FLEX_INDEX-->_<!--FLEX_ID-->">
+
+                <div id="galleryBlock_<!--FLEX_INDEX-->_<!--FLEX_ID-->" class="gallery_block_container">
+                <!--IMPERIABLOCK:INDEX=102:JS_OPERATIONS=1:VIEW=boxd.html-->
+
+                    <!-- Imperia Card -->
+                    <div >
+                        <!-- <h6 class="i-modul-title">Bild <span class="i-image-index">1</span></h6> -->
+                        <div >
+                            <div class="image_item">
+                                <img src="IMPERIA:img_minsize" height="400">
+                                    <?imperia mam copy
+                                        copyright:image_copyright
+                                        title:image_alt
+                                        caption:image_caption
+                                        ORIGURL:img_origurl
+                                        ?>
+                                </img>
+                                <input name="IMPERIA:img_origurl" type="hidden" />
+                                <input name="IMPERIA:image_title" type="hidden" />
+                                <!-- <?imperia mam default "/assets/images/mam_container_white.svg"?> -->
+                            </div>
+                            <!-- Visible image settings -->
+                            <div class="visible-settings">
+                                <div class="form-group">
+                                <label for="image_caption_<!--FLEX_INDEX-->_<!--FLEX_ID-->_<!--BLOCK_INDEX-->_<!--BLOCK_ID-->">Bildunterschrift</label>
+                                <textarea name="IMPERIA:image_caption"
+                                        id="image_caption_<!--FLEX_INDEX-->_<!--FLEX_ID-->_<!--BLOCK_INDEX-->_<!--BLOCK_ID-->"
+                                        class="form-control" size="2"
+                                ></textarea>
+                                <div class="form-hint">Dieser Text wird unterhalb des Bildes angezeigt</div>
+                                </div>
+
+                                <div class="form-group">
+                                <label for="image_copyright_<!--FLEX_INDEX-->_<!--FLEX_ID-->_<!--BLOCK_INDEX-->_<!--BLOCK_ID-->">Copyright-Hinweis</label>
+                                <input name="IMPERIA:image_copyright" id="image_copyright_<!--FLEX_INDEX-->_<!--FLEX_ID-->_<!--BLOCK_INDEX-->_<!--BLOCK_ID-->"
+                                class="form-control" type="text" placeholder="Bild: Erika Mustermann / Getty Images" />
+                                </div>
+                            </div>
+                            <!-- /Visible image settings -->
+
+                            
+                            <!-- pina toggle component: Bilderoptionen -->
+                            <button class="i-button i-secondary-btn pina-toggle-flex-settings" type="button"
+                                    aria-expanded="false" aria-controls="collapseItem_<!--FLEX_INDEX-->_<!--FLEX_ID-->_<!--BLOCK_INDEX-->_<!--BLOCK_ID-->">
+                                <span>Weitere Optionen</span>
+                            </button>
+                            <div class="pina-flex-settings" id="collapseItem_<!--FLEX_INDEX-->_<!--FLEX_ID-->_<!--BLOCK_INDEX-->_<!--BLOCK_ID-->">
+                                <div class="form-group">
+                                    <label for="image_alt_<!--FLEX_INDEX-->_<!--FLEX_ID-->_<!--BLOCK_INDEX-->_<!--BLOCK_ID-->">Alternativtext für Bildschirmleseprogramme</label>
+                                    <input name="IMPERIA:image_alt"
+                                          id="image_alt_<!--FLEX_INDEX-->_<!--FLEX_ID-->_<!--BLOCK_INDEX-->_<!--BLOCK_ID-->"
+                                          class="form-control" type="text" placeholder="Beispiel: Eine Katze lehnt sich entspannt an einer Stufe an"
+                                    />
+                                    <div class="form-hint">Beschreiben Sie in maximal 12 Worten, was auf dem Grafik zu sehen ist.</div>
+                                  </div>
+                            </div>
+                            <!-- /pina toggle component -->
+                            
+                        </div>
+                    </div>
+                    <!-- /Imperia Card -->
+
+                <!--/IMPERIABLOCK-->
+                </div><!--end gallery_block_container-->
+            </div>
+            
+            <!-- /Bootstrap Toggle component -->
+
+        </div>
+    </div>
+    <!-- /Imperia Modul -->
+    <script>
+
+    I.$(function($) {
+
+        // Init image counter
+        function initImageTotalCounter(gallery) {
+            //total
+            var totalCounter = $('#galleryTotal_<!--FLEX_INDEX-->_<!--FLEX_ID-->');
+            var totalInput = $('#galleryTotalInput_<!--FLEX_INDEX-->_<!--FLEX_ID-->');
+            var totalVal = $(totalInput).val(); //0
+
+            if (totalVal > 0) {
+                $(totalCounter).text(totalVal + " Bilder");
+                $(gallery).find('.ic-preview-wrapper').addClass('ic-preview-highlighted')
+            } else {
+                $(gallery).find('.ic-preview-wrapper').removeClass('ic-preview-highlighted')
+            }
+        }
+
+        //Display gallery image preview
+        function galleryImagePreview(gallery) {
+            var gallery = $(gallery);
+            var preview = $(gallery).find('.img_layer_0');
+            var src = $(gallery).find('.imperiablock_instance').last().find('.i-ac-img-hidden').val();
+
+            if (src) {
+                $(preview).find('.gallery_preview_image').attr('src', src);
+            } else {
+                $(preview).find('.gallery_preview_image').attr('src', '');
+            }
+        }
+
+        function countImageBlocks(gallery) {
+           //image index
+           var gallery = $(gallery);
+           var iblocks = $(gallery).find('.imperiablock_instance');
+            $(iblocks).each(function(index){
+                $(this).find('.i-image-index').text(index+1);
+            });
+        }
+        
+        initImageTotalCounter('#gallery_<!--FLEX_INDEX-->_<!--FLEX_ID-->');
+        galleryImagePreview('#gallery_<!--FLEX_INDEX-->_<!--FLEX_ID-->');
+        // countImageBlocks('#gallery_<!--FLEX_INDEX-->_<!--FLEX_ID-->');
+
+        $(document).on('change', '#imperiablock_count_<!--FLEX_INDEX-->_<!--FLEX_ID-->_102',function(e) {
+            console.log('imperiablock_count changed');
+            var gallery = $(this).closest('.ic-gallery');
+            var newTotal_<!--FLEX_INDEX-->_<!--FLEX_ID--> = $(this).val();
+            var totalCounter = $('#galleryTotal_<!--FLEX_INDEX-->_<!--FLEX_ID-->');
+            var totalInput = $('#galleryTotalInput_<!--FLEX_INDEX-->_<!--FLEX_ID-->');
+
+            $(totalInput).val(newTotal_<!--FLEX_INDEX-->_<!--FLEX_ID-->);
+
+
+            if (newTotal_<!--FLEX_INDEX-->_<!--FLEX_ID--> > 0) {
+                $(gallery).find('.ic-preview-wrapper').addClass('ic-preview-highlighted');
+                $(totalCounter).text(newTotal_<!--FLEX_INDEX-->_<!--FLEX_ID--> + " Bilder");
+            } else {
+                $(gallery).find('.ic-preview-wrapper').removeClass('ic-preview-highlighted');
+                $(totalCounter).text("");
+            }
+
+            //image index
+            // countImageBlocks(gallery);
+
+            //image preview
+            galleryImagePreview(gallery);
+            //toggle image button
+            if (newTotal_<!--FLEX_INDEX-->_<!--FLEX_ID--> > 0) {
+                $(gallery).find('.ic-toggle-gallery-btn').css('visibility', 'visible');
+            } else {
+                $(gallery).find('.ic-toggle-gallery-btn').css('visibility', 'hidden');
+                $(gallery).find('.collapse').removeClass('show');
+            }
+
+        }).on('click',"a[href^='javascript:imperiablock_reload']",function(e){
+
+            var href = $(this).attr('href');
+            var gallery = $(this).closest('.ic-gallery');
+            var hiddenBlockCount = $(gallery).find("input[name^='imperiablock_count_']");
+
+            // count only on DELETE or CLONE
+            if ((this.href.indexOf('DEL') != -1) || (this.href.indexOf('CLONE') != -1)) {
+                setTimeout(function() {
+                    $(hiddenBlockCount).change();
+                    galleryImagePreview(gallery);
+                }, 500);
+            }
+            // recalculate image index on MOVE
+            if (this.href.indexOf('MOVE') != -1) {
+                setTimeout(function() {
+                    // countImageBlocks(gallery);
+                    galleryImagePreview(gallery);
+                }, 500);
+            }
+        });
+
+        // $($("#addBlockId_<!--FLEX_INDEX-->_<!--FLEX_ID-->")).appendTo( $("#galleryBlock_<!--FLEX_INDEX-->_<!--FLEX_ID--> .i-instance-container")[0] );
+        var oi2 = I.MAM.onInsert;
+   
+        I.MAM.onInsert = function() {
+            var gallery_elments = Object.keys(I.MAM.acCode);
+            var flexIndex = gallery_elments.filter(function (text) {
+                return text.includes('gallery');
+            });
+            var flexIndexNew = flexIndex[0].replace(/gallery_|_imperiablock/g, '');
+            $("#imperiablock_count_" + flexIndexNew ).change();
+
+            // remove default imperia image placeholder background
+            $("img[name^='MDimg_minsize_"+ flexIndexNew +"']").each(function(){
+                if(($(this).attr('src')).indexOf('assets/baseline-add_photo_alternate-24px.svg') === -1 ) {
+                    $(this).closest('.imperia_img_placeholder').removeClass('ce_body_default_img').addClass('ce_body_with_img');
+                }
+             });
+          if (oi2) oi2();
+        }
+        // return {}
+
+    });
+
+    </script>
+#ELSE
+
+<div id="carouselExampleControls_<!--FLEX_INDEX-->_<!--FLEX_ID-->" class="carousel slide" data-ride="carousel w-90">
+  <div class="carousel-inner">
+    <!--IMPERIABLOCK:INDEX=102-->
+        #IF("<!--XX-FLEX-IBLOCK-img_minsize-->")
+            <div class="carousel-item 
+            #IF("<!--BLOCK_ID-->" EQ 0)
+            active
+            #ENDIF
+            ">
+                <img class="d-block XXw-100" src="<!--XX-FLEX-IBLOCK-img_minsize-->" alt="<!--XX-FLEX-IBLOCK-TEXT:image_alt-->">
+                <div class="carousel-caption d-none d-md-block">
+                    <p><!--XX-FLEX-IBLOCK-TEXT:image_caption-->
+                        #IF("<!--XX-FLEX-IBLOCK-image_copyright-->")
+                        &nbsp;<span>©&nbsp;<!--XX-TEXT:image_copyright_<!--FLEX_INDEX-->_<!--FLEX_ID-->_<!--BLOCK_INDEX-->_<!--BLOCK_ID-->--></span>
+                        #ENDIF
+                    </p>
+                </div>
+            </div>
+        #ENDIF
+    <!--/IMPERIABLOCK-->
+  </div>
+
+  <a class="carousel-control-prev" href="#carouselExampleControls_<!--FLEX_INDEX-->_<!--FLEX_ID-->" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls_<!--FLEX_INDEX-->_<!--FLEX_ID-->" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+#ENDIF

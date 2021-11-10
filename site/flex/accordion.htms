@@ -1,0 +1,91 @@
+AUTHOR: pirobase imperia GmbH
+DESCRIPTION: Akkordeon
+HELPTEXT: Akkordeon
+LOAD: AJAX
+
+#IF (<!--XX-editmode-->)
+
+  <!-- apply pina style -->
+  <div class="pina">
+
+    <!--IMPERIABLOCK:INDEX=235:LABEL=Akkordeon-Element:COLLAPSE=1:DND=1:JS_OPERATIONS=1-->
+    <div class='pina-section'>
+        <!-- Text field -->
+        <div class="form-group">
+            <label for="accordion-title_<!--FLEX_INDEX-->_<!--FLEX_ID-->_<!--BLOCK_INDEX-->_<!--BLOCK_ID-->">Akkordeon-Überschrift</label>
+            <input name="IMPERIA:accordionTitle" type="text" class="form-control" id="accordion-title__<!--FLEX_INDEX-->_<!--FLEX_ID-->_<!--BLOCK_INDEX-->_<!--BLOCK_ID-->" placeholder="Lorem ipsum dolor">
+        </div>
+        
+        <div class="form-group pina-accordion-text">
+            <label for="accordion-text_<!--FLEX_INDEX-->_<!--FLEX_ID-->_<!--BLOCK_INDEX-->_<!--BLOCK_ID-->">Akkordeon-Inhalt</label>
+            <?imperia iwe2
+            id: iwe2_<!--FLEX_INDEX-->_<!--FLEX_ID-->_<!--BLOCK_INDEX-->_<!--BLOCK_ID-->
+            customConfig: /pina/iwe/iwe2-config.js
+            toolbar: ImperiaBasic
+            editorplaceholder: Inhalt eingeben
+            ?>
+        </div>
+        <!-- pina toggle combo -->
+        <button type="button" class="i-button i-secondary-btn pina-toggle-flex-settings">
+            <span class="btn-icon"></span>
+            <span class="btn-label">Weitere Optionen</span>
+        </button>
+
+        <div class="pina-flex-settings"> 
+            <div class="form-group">
+                <label class="i-material-switch">
+                    <input name="IMPERIA:accordionToggle" type="checkbox" 
+                    #IF("<!--XX-FLEX-IBLOCK-accordionToggle-->")
+                    checked
+                    #ENDIF
+                    >
+                    <span>standardmäßig ausklappen</span>
+                </label>
+                <div class="form-hint">Wenn die Option aktiviert ist,  erscheint dieses Akkordeon-Element standardmäßig ausgeklappt</div>
+
+            </div>
+        </div>
+        <!-- /pina toggle combo -->
+            
+    </div>
+    <!--/IMPERIABLOCK-->
+    
+  </div>
+
+#ELSE
+
+    <div id="accordion_<!--FLEX_INDEX-->_<!--FLEX_ID-->">
+    <!--IMPERIABLOCK:INDEX=235-->
+    <div class="card">
+        <div class="card-header" id="accordion_heading_<!--FLEX_INDEX-->_<!--FLEX_ID-->_<!--BLOCK_INDEX-->_<!--BLOCK_ID-->">
+            <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" 
+                        data-target="#accordion_body_<!--FLEX_INDEX-->_<!--FLEX_ID-->_<!--BLOCK_INDEX-->_<!--BLOCK_ID-->" 
+                        #IF("<!--XX-FLEX-IBLOCK-accordionToggle-->")
+                        aria-expanded="true" 
+                        #ELSE
+                        aria-expanded="false" 
+                        #ENDIF
+                        aria-controls="accordion_body_<!--FLEX_INDEX-->_<!--FLEX_ID-->_<!--BLOCK_INDEX-->_<!--BLOCK_ID-->">
+                <!--XX-FLEX-IBLOCK-accordionTitle-->
+                </button>
+            </h5>
+        </div>
+
+        <div id="accordion_body_<!--FLEX_INDEX-->_<!--FLEX_ID-->_<!--BLOCK_INDEX-->_<!--BLOCK_ID-->" 
+             class="collapse 
+                    #IF(<!--XX-FLEX-IBLOCK-accordionToggle-->)
+                    show
+                    #ENDIF
+                    " 
+            aria-labelledby="accordion_heading_<!--FLEX_INDEX-->_<!--FLEX_ID-->_<!--BLOCK_INDEX-->_<!--BLOCK_ID-->" 
+            data-parent="#accordion_<!--FLEX_INDEX-->_<!--FLEX_ID-->">
+
+            <div class="card-body">
+                <!--XX-FLEX-IBLOCK-iwe2-->
+            </div>
+        </div>
+    </div>
+    <!--/IMPERIABLOCK-->
+    </div>
+#ENDIF

@@ -1,0 +1,45 @@
+AUTHOR: pirobase imperia GmbH
+DESCRIPTION: Embeded Code Modul
+HELPTEXT: Embeded Code
+LOAD: AJAX
+
+
+#IF(<!--XX-editmode-->)
+<div class="pina embeded-code-module">
+        <div class="pina-label">Vorschau</div>
+        <div class="embeded-preview 
+            #IF(<!--XX-FLEX-source_code-->)
+            embeded-preview-map
+            #ENDIF
+        ">
+            #IF(<!--XX-FLEX-source_code-->)
+           <!--XX-FLEX-source_code--> 
+            #ENDIF
+            <span class="hint">
+                Fügen Sie den Einbettungscode ein, um das Widget zu laden
+            </span>
+        </div>
+        <div style="text-align: right;">
+            <button class="btn i-button i-secondary-btn i-action-load-embeded-code-preview" type="button">
+                #IF(<!--XX-FLEX-source_code-->)
+                Reload Preview
+                #ELSE
+                Load Preview
+                #ENDIF
+            </button>
+        </div>
+       
+        <!-- Text field -->
+        <div class="form-group">
+            <label for="source_code_<!--FLEX_INDEX-->_<!--FLEX_ID-->">Einbettungscode</label>
+            <textarea name="IMPERIA:source_code"  class="form-control embeded-code-control" 
+                id="source_code__<!--FLEX_INDEX-->_<!--FLEX_ID-->" 
+                onkeyup="validateEmbededSrc('https://www.openstreetmap.org', 'source_code__<!--FLEX_INDEX-->_<!--FLEX_ID-->')" 
+                placeholder="HTML-Einbettungscode einfügen"></textarea>
+            <div class="form-hint">Öffnen Sie <a href="https://www.openstreetmap.org" target="new">https://www.openstreetmap.org</a>, klicken Sie auf den Teilen-Button und kopieren Sie den Einbettungscode aus dem HTML-Reiter.</div>
+            <div class="form-hint-error">Der eingefügte Einbettungscode ist für dieses Modul nicht zulässig</div>
+        </div>
+</div>
+#ELSE
+<!--XX-FLEX-source_code-->
+#ENDIF

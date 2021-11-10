@@ -1,0 +1,13 @@
+AUTHOR: pirobase imperia GmbH
+DESCRIPTION: Inhaltsverzeichnis
+HELPTEXT: Inhaltsverzeichnis
+LOAD: AJAX
+
+#IF(<!--XX-editmode-->)
+<div>
+    <i class="fa5 fas fa-info-circle"></i>&nbsp;
+    <i>An dieser Position wird aus den Überschriften dieser Seite ein Inhaltsverzeichnis generiert.</i>
+</div>
+#ELSE
+<div class="pina-toc-output"></div>
+#ENDIF

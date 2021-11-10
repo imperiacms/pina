@@ -1,0 +1,70 @@
+AUTHOR: pirobase imperia GmbH
+DESCRIPTION: Überschriften Modul
+HELPTEXT: Überschriften H1 bis H5
+LOAD: AJAX
+
+#IF (<!--XX-editmode-->)
+
+	<!-- apply pina style -->
+	<div class="pina pina-headings-modul">
+		<!-- pina toolbar -->
+		<div class="pina-flex-toolbar">
+
+			<select name="IMPERIA:h_size" class="iwe-headings-select" aria-label="Überschrift Grad">
+				<option class="heading_option h1" value="h1"><span class="heading_option h1">Überschrift 1</span></option>
+				<option class="heading_option h2" value="h2" 
+				#IF(NOT("<!--XX-FLEX-h_size-->"))
+				selected
+				#ENDIF
+				>Überschrift 2</option>
+				<option class="heading_option h3" value="h3">Überschrift 3</option>
+				<option class="heading_option h4" value="h4">Überschrift 4</option>
+				<option class="heading_option h5" value="h5">Überschrift 5</option>
+				<!-- <option class="heading_option h6" value="h6">Überschrift 6</option> -->
+			</select>
+		</div>
+		<!-- full width for iwe --> <!-- pina-wrapper-iwe or pina-wrapper ?-->
+		<div class="pina-wrapper-iwe">
+			<textarea name="IMPERIA:heading"  placeholder="Mein Überschrift hier eingeben" class="form-control heading_control 
+			#IF(NOT(<!--XX-FLEX-h_size-->))
+				heading_h2
+			#ELSE
+			heading_<!--XX-FLEX-h_size-->
+			#ENDIF
+			autosize" rows="1"></textarea>
+		</div>
+		<button type="button" class="i-button i-secondary-btn pina-toggle-flex-settings">
+			<span class="btn-icon"></span>
+			<span class="btn-label">Weitere Optionen</span>
+		</button>
+	  
+		<div class="pina-flex-settings"> 
+			
+			<label class="i-material-switch">
+				<input name="IMPERIA:headingNotInToC" type="checkbox" class="pina-headingNotInToC-input"
+				#IF("<!--XX-FLEX-headingNotInToC-->")
+				checked
+				#ENDIF
+				>
+				<span>Überschrift vom Inhaltsverzeichnis ausschließen</span>
+			</label>
+			<div class="form-hint">Aktivieren Sie die Option, damit diese Überschrift nicht in das Inhaltsverzeichnis aufgenommen wird.</div>
+		</div>
+	</div>
+
+#ELSE
+
+	#IF(NOT("<!--XX-FLEX-headingNotInToC-->"))
+	<span class="pina-toc-marker">
+	#ENDIF
+	
+		<<!--XX-FLEX-h_size-->>
+		<!--XX-FLEX-TEXTBR:heading-->
+		</<!--XX-FLEX-h_size-->>
+
+	#IF(NOT("<!--XX-FLEX-headingNotInToC-->"))
+	</span>
+	#ENDIF
+	
+
+#ENDIF

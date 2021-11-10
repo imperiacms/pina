@@ -19,7 +19,7 @@ LOAD: AJAX
 
 #ELSE
 
-  <div class="pina-text">
+  <div class="pina-text pina-toc-marker">
     <!--XX-FLEX-iwe2-->
   </div>
 
