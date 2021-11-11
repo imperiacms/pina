@@ -1,7 +1,7 @@
 // Pina Styles for Editmode
 
 @import 'variables';
-
+@import 'typography.css';
 
 
 /* Wrap flex/slot content into 'pina-wrapper' in order to center it and to apply max-width */
@@ -33,7 +33,7 @@
 .pina {
     color: $pina-text-color;
     
-    h1, h2, h3, h4, h5, h6, label, .form-text, .pina-label {
+    h1, h2, h3, h4, h5, h6, label, .form-text, .pina-label, .form-hint {
         font-family: 'Roboto Regular';
     }
     h1 {
@@ -119,6 +119,7 @@
         border: 1px solid $pina-border-color;
         -webkit-border-radius: $pina-border-radius;
         border-radius: $pina-border-radius;
+        font-family: 'Roboto Regular', serif;
         background: url(/imperia/images/editmode/select_arrow_down.gif) no-repeat;
         background-position: right 5px bottom 50%;
         padding-right: 15px;
@@ -129,7 +130,7 @@
         border-radius: 0;
         font-size: 11px;
         line-height: 26px;
-        
+        font-family: 'Roboto Regular', serif;
         margin: 0;
         display: block;
         color: $blue;
@@ -1153,6 +1154,7 @@
             bottom: -17px;
             text-align: left;
             padding-left: 20px;
+            font-family: "Roboto Regular", Arial, sans-serif;  
             background-color: transparent;
             // background-image: linear-gradient(to top, rgba(81,81,81,0.35), rgba(81,81,81,0));
         }
@@ -1167,11 +1169,12 @@
         position: absolute;
         top: 20%;
         left: 10%;
-        font-size: 3em;
-        color: #5f5d7e;
+        font-size: 2em;
+        color: #868686;
         opacity: 0.7;
         font-size: 22px;
         line-height: 30px;
+        font-family: "Roboto Regular", Arial, sans-serif; 
     }
     .ic-gallery-preview .img_layer_0 {
         background-image: url("/imperia/images/undraw_blank_canvas_3rbb.svg");
@@ -1214,25 +1217,5 @@
         margin: 5px 0 5px 5px;
         padding: 7px 10px 6px 10px;
     }
-    .heading_control {
-        font-weight: bold;
-    }
-    .heading_control::placeholder {
-        color: #adadad;
-    }
-    .heading_h1, .heading_h1::placeholder {
-        font-size: 2.1rem;
-    }
-    .heading_h2, .heading_h2::placeholder {
-        font-size: 1.8rem;
-    }
-    .heading_h3, .heading_h3::placeholder {
-        font-size: 1.4rem;
-    }
-    .heading_h4, .heading_h4::placeholder {
-        font-size: 1rem;
-    }
-    .heading_h5, .heading_h5::placeholder {
-        font-size: 0.9rem;
-    }
+    
 }

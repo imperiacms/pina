@@ -1,0 +1,45 @@
+/*
+* Typography Css for editmode & savemode (sample)
+*/
+
+@font-face {
+    font-family: 'OFLGoudy';
+    src:url("/pina/iwe/Sorts_Mill_Goudy/SortsMillGoudy-Regular.woff") format("woff"),
+      url("/pina/iwe/Sorts_Mill_Goudy/SortsMillGoudy-Regular.ttf") format("truetype");
+}
+
+body, p
+.cke_editable, .heading_control,
+.pina-text, .pina-image-wrapper figcaption {
+  font-family: 'OFLGoudy','Georgia', serif;
+}
+
+/* IWE body */
+.cke_editable {
+    font-size: 18px;
+    line-height: 0.9rem;
+}
+
+/*Flexmodule Heading */
+
+.heading_control {
+    font-weight: bold;
+}
+.heading_control::placeholder {
+    color: #adadad;
+}
+h1, .heading_h1, .heading_h1::placeholder {
+    font-size: 2.1rem;
+}
+h2, .heading_h2, .heading_h2::placeholder {
+    font-size: 1.8rem;
+}
+h3, .heading_h3, .heading_h3::placeholder {
+    font-size: 1.4rem;
+}
+h4, .heading_h4, .heading_h4::placeholder {
+    font-size: 1rem;
+}
+h5, .heading_h5, .heading_h5::placeholder {
+    font-size: 0.9rem;
+}

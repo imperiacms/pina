@@ -5,7 +5,7 @@ CKEDITOR.editorConfig = function( config ) {
   config.autoGrow_minHeight = 100;
   config.autoGrow_onStartup = true;
   config.format_tags = 'p;h2;h3';
-  config.contentsCss = '/pina/iwe/ckbody.css';
+  config.contentsCss = '/pina/styles/typography.css';
   config.editorplaceholder = 'Inhalt eingeben';
 
 

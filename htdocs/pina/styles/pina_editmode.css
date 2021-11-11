@@ -1,3 +1,4 @@
+@import url(typography.css);
 @font-face {
   font-family: "Roboto Regular";
   src: url("/imperia/fonts/Roboto/Roboto-Regular.ttf"); }
@@ -38,7 +39,8 @@
 .pina {
   color: #3D3D3D;
   /* IE10+ */ }
-  #imperia .pina h1, #imperia .pina h2, #imperia .pina h3, #imperia .pina h4, #imperia .pina h5, #imperia .pina h6, #imperia .pina label, #imperia .pina .form-text, #imperia .pina .pina-label,
+  #imperia .pina h1, #imperia .pina h2, #imperia .pina h3, #imperia .pina h4, #imperia .pina h5, #imperia .pina h6, #imperia .pina label, #imperia .pina .form-text, #imperia .pina .pina-label, #imperia .pina .form-hint,
+  #imperia .pina .form-hint-error,
   .pina h1,
   .pina h2,
   .pina h3,
@@ -47,7 +49,10 @@
   .pina h6,
   .pina label,
   .pina .form-text,
-  .pina .pina-label {
+  .pina .pina-label,
+  .pina .form-hint,
+  #imperia .pina .form-hint-error,
+  .pina .form-hint-error {
     font-family: 'Roboto Regular'; }
   #imperia .pina h1,
   .pina h1 {
@@ -140,6 +145,7 @@
     border: 1px solid #ccc;
     -webkit-border-radius: 2px;
     border-radius: 2px;
+    font-family: 'Roboto Regular', serif;
     background: url(/imperia/images/editmode/select_arrow_down.gif) no-repeat;
     background-position: right 5px bottom 50%;
     padding-right: 15px; }
@@ -150,6 +156,7 @@
     border-radius: 0;
     font-size: 11px;
     line-height: 26px;
+    font-family: 'Roboto Regular', serif;
     margin: 0;
     display: block;
     color: #1C385F;
@@ -1055,6 +1062,7 @@
       bottom: -17px;
       text-align: left;
       padding-left: 20px;
+      font-family: "Roboto Regular", Arial, sans-serif;
       background-color: transparent; }
   #imperia .pina .ic-preview-text,
   .pina .ic-preview-text {
@@ -1066,11 +1074,12 @@
     position: absolute;
     top: 20%;
     left: 10%;
-    font-size: 3em;
-    color: #5f5d7e;
+    font-size: 2em;
+    color: #868686;
     opacity: 0.7;
     font-size: 22px;
-    line-height: 30px; }
+    line-height: 30px;
+    font-family: "Roboto Regular", Arial, sans-serif; }
   #imperia .pina .ic-gallery-preview .img_layer_0,
   .pina .ic-gallery-preview .img_layer_0 {
     background-image: url("/imperia/images/undraw_blank_canvas_3rbb.svg"); }
@@ -1102,31 +1111,5 @@
     line-height: 14px;
     margin: 5px 0 5px 5px;
     padding: 7px 10px 6px 10px; }
-  #imperia .pina .heading_control,
-  .pina .heading_control {
-    font-weight: bold; }
-  #imperia .pina .heading_control::placeholder,
-  .pina .heading_control::placeholder {
-    color: #adadad; }
-  #imperia .pina .heading_h1, #imperia .pina .heading_h1::placeholder,
-  .pina .heading_h1,
-  .pina .heading_h1::placeholder {
-    font-size: 2.1rem; }
-  #imperia .pina .heading_h2, #imperia .pina .heading_h2::placeholder,
-  .pina .heading_h2,
-  .pina .heading_h2::placeholder {
-    font-size: 1.8rem; }
-  #imperia .pina .heading_h3, #imperia .pina .heading_h3::placeholder,
-  .pina .heading_h3,
-  .pina .heading_h3::placeholder {
-    font-size: 1.4rem; }
-  #imperia .pina .heading_h4, #imperia .pina .heading_h4::placeholder,
-  .pina .heading_h4,
-  .pina .heading_h4::placeholder {
-    font-size: 1rem; }
-  #imperia .pina .heading_h5, #imperia .pina .heading_h5::placeholder,
-  .pina .heading_h5,
-  .pina .heading_h5::placeholder {
-    font-size: 0.9rem; }
 
 /*# sourceMappingURL=pina_editmode.css.map */

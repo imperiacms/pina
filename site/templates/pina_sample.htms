@@ -20,14 +20,6 @@
     body {
       padding-top: 20px;
     }
-    @font-face {
-      font-family: 'OFLGoudy';
-      src:url("Sorts_Mill_Goudy/SortsMillGoudy-Regular.woff") format("woff"),
-      url("Sorts_Mill_Goudy/SortsMillGoudy-Regular.ttf") format("truetype");
-    }
-    .pina-text, .pina-image-wrapper figcaption {
-      font-family: 'OFLGoudy','Georgia', serif;
-    }
     .pina-text {
       font-size: 19px;
     }
