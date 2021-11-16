@@ -1,7 +1,6 @@
 /*                            */
 /* Pina styles for Save Mode. */
 /*                            */
-@import url(typography.css);
 @font-face {
   font-family: "Roboto Regular";
   src: url("/imperia/fonts/Roboto/Roboto-Regular.ttf"); }
@@ -61,7 +60,7 @@
   .pina-image-left, .pina-image-right {
     max-width: 100%; } }
 .pina-quote {
-  background-image: url("../img/quote.svg");
+  background-image: url("../images/quote.svg");
   background-repeat: no-repeat;
   background-position-x: left;
   background-position-y: top;

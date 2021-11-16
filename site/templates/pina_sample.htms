@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="/pina/styles/pina_editmode.css">
   <link rel="stylesheet" href="/imperia/css/editmode/bootstrap-fixes.css">
   #ENDIF
+  <link rel="stylesheet" href="/pina/styles/typography.css">
   <link rel="stylesheet" href="/pina/styles/pina.css">
   <!--IMPERIA:ONECLICKEDIT-->
 

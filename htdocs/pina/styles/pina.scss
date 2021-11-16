@@ -3,7 +3,7 @@
 /*                            */
 
 @import 'variables';
-@import 'typography.css';
+// @import 'typography.css';
 
 // Pina Felxmodules Article image and Article Text 
 .pina-image-wrapper {
@@ -61,7 +61,7 @@
 
 // Pina Quote
 .pina-quote {
-    background-image: url("../img/quote.svg");
+    background-image: url("../images/quote.svg");
     background-repeat: no-repeat;
     background-position-x: left;
     background-position-y: top;
